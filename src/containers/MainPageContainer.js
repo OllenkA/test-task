@@ -4,16 +4,16 @@ import MainPage from "../components/MainPage/MainPage";
 
 class MainPageContainer extends Component {
     state = {
-        isButtonPressed: false,
+        language: 'en',
     };
 
-    onClickButton = () => {
-        this.setState({isButtonPressed: !this.state.isButtonPressed})
+    changeLanguage = (language) => {
+        this.setState({language: language})
     };
 
     render() {
-        return <MainPage onClickButton={this.onClickButton}
-                         isButtonPressed={this.state.isButtonPressed}/>
+        return <MainPage changeLanguage={this.changeLanguage}
+                         language={this.state.language}/>
     }
 }
 
