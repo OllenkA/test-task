@@ -29,7 +29,7 @@ const postReducer = (state = initialState, action) => {
         case SET_LOADING:{
             return {
                 ...state,
-                loading: action.value,
+                loading: action.value
             }
         }
 
@@ -48,6 +48,6 @@ export const getPosts = () => async (dispatch, getState) => {
 
 export const getPostsSuccess = (posts) => ({type: GET_POSTS_SUCCESS, posts});
 export const clearPosts = () => ({type: CLEAR_POSTS});
-export const setLoading = () => ({type: SET_LOADING});
+export const setLoading = (value) => ({type: SET_LOADING, value});
 
 export default postReducer;

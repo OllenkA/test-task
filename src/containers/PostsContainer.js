@@ -7,8 +7,10 @@ import Posts from "../components/Posts/Posts";
 
 
 class PostsContainer extends Component {
+    sectionRef = React.createRef();
+
     componentDidMount() {
-        this.props.getPosts(this.props.currentPage);
+        this.props.getPosts();
         document.addEventListener('scroll', this.onScroll);
     }
 
@@ -18,30 +20,31 @@ class PostsContainer extends Component {
     }
 
     onScroll = () => {
-        let block = document.getElementById('showScroll');
+        let block = this.sectionRef.current;
         let contentHeight = block.offsetHeight;      // 1) высота блока контента вместе с границами
-        let yOffset       = window.pageYOffset;      // 2) текущее положение скролбара
+        let yOffset = window.pageYOffset;      // 2) текущее положение скролбара
         let window_height = window.innerHeight;      // 3) высота внутренней области окна документа
-        let y             = yOffset + window_height;
-        // если пользователь достиг конца
-        if(y >= contentHeight) {
-            if(!this.props.loading){
-            this.props.getPosts(this.props.currentPage);}
-            // contentHeight = contentHeight *2;
-            // подгрузить новые посты
+        let y = yOffset + window_height;
+        // если пользователь достиг конца страницы
+        if (y >= contentHeight) {
+            if (!this.props.loading) {
+                this.props.getPosts();
+            }
         }
     };
 
     render() {
-        let posts = this.props.posts &&
-            this.props.posts.map(post => {
-                return <Posts key={post.id} title={post.title} body={post.body}/>
-            });
+        const {posts = []} = this.props;
+        let postsElements = posts.map(p => {
+            return <Posts key={p.id} title={p.title} body={p.body}/>
+        });
+
         return (
             <article className={styles.container}>
                 <Title title={'POSTS'}/>
-                <section className={styles.wrapper} id='showScroll'>
-                    {posts}
+                <section className={styles.wrapper} ref={this.sectionRef}>
+                    {postsElements}
+                    {this.props.loading && <span>loading...</span>}
                 </section>
             </article>
         );
@@ -50,7 +53,6 @@ class PostsContainer extends Component {
 
 let mapStateToProps = (state) => ({
     posts: state.post.posts,
-    currentPage: state.post.currentPage,
     loading: state.post.loading,
 });
 

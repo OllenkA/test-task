@@ -6,7 +6,10 @@ import Profile from "../components/Profile/Profile";
 
 const ProfileContainer = (props) => {
 
-    if(props.isAuth === false){return <Redirect to={'/login'}/>}
+    if(props.isAuth === false){
+        return <Redirect to={'/login'}/>
+    }
+
     return <Profile {...props}/>
 };
 

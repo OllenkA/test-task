@@ -25,12 +25,11 @@ const Profile = (props) => {
                         <h3>I am frontend REACT.js developer</h3>
                     </section>
                 </article>
-                <article className={styles.education}>
+                <article>
                     <h3>My education</h3>
                     <ul>
                         <li>Minsk State Radio Engineering College</li>
                         <li>Belarusian State University of Informatics and Radioelectronics</li>
-                        <li>IT_INCUBATOR</li>
                         <li>English - intermediate level</li>
                     </ul>
                 </article>
