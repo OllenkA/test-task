@@ -1,5 +1,6 @@
-import api, {repository} from "../repository/api";
+import api from "../repository/api";
 import {faFacebook, faGithub, faGoogle, faLinkedin, faTelegram, faVk} from "@fortawesome/free-brands-svg-icons";
+import {repository} from "../repository/repository";
 
 const LOGIN_SUCCESS = 'ARTICLES/LOGIN_SUCCESS';
 const LOGIN_ERROR = 'ARTICLES/LOGIN_ERROR';
@@ -53,8 +54,8 @@ const authReducer = (state = initialState, action) => {
 export const login = (username, password) => async (dispatch) => {
     const result = await api.login(username, password);
     if (result.ok) {
-        repository.saveToken(result.token);
-        repository.saveUserName(username);
+        await repository.saveToken(result.token);
+        await repository.saveUserName(username);
         dispatch(loginSuccess(username))
     } else {
         dispatch(loginError())
