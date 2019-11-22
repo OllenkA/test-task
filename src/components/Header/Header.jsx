@@ -24,7 +24,8 @@ function Header(props) {
             <div className={styles.item}>
                 {props.isAuth ?
                     <div>{props.userName} -
-                        <button onClick={props.logout}>
+                        <button className={styles.button}
+                                onClick={props.logout}>
                             Log out
                         </button>
                     </div>

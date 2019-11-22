@@ -1,9 +1,9 @@
 import api, {repository} from "../repository/api";
 import {faFacebook, faGithub, faGoogle, faLinkedin, faTelegram, faVk} from "@fortawesome/free-brands-svg-icons";
 
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-const LOGIN_ERROR = 'LOGIN_ERROR';
-const LOG_OUT = 'LOG_OUT';
+const LOGIN_SUCCESS = 'ARTICLES/LOGIN_SUCCESS';
+const LOGIN_ERROR = 'ARTICLES/LOGIN_ERROR';
+const LOG_OUT = 'ARTICLES/LOG_OUT';
 
 const initialState = {
     socialIcons: [
@@ -63,15 +63,15 @@ export const login = (username, password) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
     // выолгиниваемся, просто зачистив токен у себя и изменив стейт...
-    await repository.saveToken(null);
     await repository.clearAll();
-    dispatch(logOut(null))
+    dispatch(logOut())
 };
 
 export const checkAuthorization = () => async (dispatch) => {
     const token = await repository.loadToken();
-    const username = await repository.loadUserName();
+
     if (token) {
+        const username = await repository.loadUserName();
         dispatch(loginSuccess(username))
     }
 };

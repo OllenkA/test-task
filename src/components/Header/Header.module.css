@@ -6,7 +6,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .nav{
@@ -17,9 +16,9 @@
     align-items: center;
 }
 
-/*.admin {*/
-/*    padding-right: 10px;*/
-/*}*/
+.button{
+    background-color: white;
+}
 
 .item {
     margin-right: 30px;
@@ -32,5 +31,5 @@
     font-weight: bold;
 }
 .item a.activeLink {
-    color: gold;
+    color: white;
 }

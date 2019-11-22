@@ -1,8 +1,8 @@
 import api from "../repository/api";
 
-const SET_POST = 'SET_POST';
-const CLEAR_POSTS = 'CLEAR_POSTS';
-const SET_LOADING = 'SET_LOADING';
+const GET_POSTS_SUCCESS = 'ARTICLES/GET_POSTS_SUCCESS';
+const CLEAR_POSTS = 'ARTICLES/CLEAR_POSTS';
+const SET_LOADING = 'ARTICLES/SET_LOADING';
 
 const initialState = {
     posts: [],
@@ -12,7 +12,7 @@ const initialState = {
 
 const postReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_POST: {
+        case GET_POSTS_SUCCESS: {
             return {
                 ...state,
                 posts: [...state.posts, ...action.posts],
@@ -29,7 +29,7 @@ const postReducer = (state = initialState, action) => {
         case SET_LOADING:{
             return {
                 ...state,
-                loading: !state.loading,
+                loading: action.value,
             }
         }
 
@@ -38,16 +38,15 @@ const postReducer = (state = initialState, action) => {
     }
 };
 
-export const getPosts = (page) => async (dispatch) => {
-    dispatch(setLoading());
-    const result = await api.getPosts(page);
-    if (result.status === 200) {
-        dispatch(setPost(result.data))
-    }
-    dispatch(setLoading())
+export const getPosts = () => async (dispatch, getState) => {
+    const page = getState().post.currentPage;
+    dispatch(setLoading(true));
+    const posts = await api.getPosts(page);
+    dispatch(getPostsSuccess(posts));
+    dispatch(setLoading(false))
 };
 
-export const setPost = (posts) => ({type: SET_POST, posts});
+export const getPostsSuccess = (posts) => ({type: GET_POSTS_SUCCESS, posts});
 export const clearPosts = () => ({type: CLEAR_POSTS});
 export const setLoading = () => ({type: SET_LOADING});
 
