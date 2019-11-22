@@ -1,0 +1,14 @@
+.container {
+    margin-top: 80px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.log{
+    margin: 10px;
+}

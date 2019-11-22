@@ -1,0 +1,29 @@
+.container {
+    margin-top: 80px;
+}
+
+.wrapper {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.button{
+    position: absolute;
+    right: calc(100vw - 90vw);
+}
+
+.wrapper p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.wrapper h3{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.fake {
+    list-style: none;
+}

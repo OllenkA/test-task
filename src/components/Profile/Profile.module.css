@@ -1,0 +1,44 @@
+.container {
+    margin-top: 80px;
+}
+
+.wrapper {
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.information {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.socialIcon {
+    margin-right: 15px;
+    text-decoration: none;
+    color: dodgerblue;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+}
+
+.socialIcon:hover {
+    opacity: .5;
+    transition: 1s;
+}
+
+.photoContainer {
+    object-fit: contain;
+}
+
+.photoContainer img {
+    width: 20vw;
+
+}
