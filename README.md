@@ -1,4 +1,4 @@
-https://ollenka.github.io/profile-page
+https://ollenka.github.io/test-task
 
 Задача
 Реализовать приложение, которое умеет показывать следующие страницы:
