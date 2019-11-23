@@ -29,9 +29,7 @@ function Header(props) {
                             Log out
                         </button>
                     </div>
-                    : <NavLink to='/login'>
-                        LOGIN
-                    </NavLink>}
+                    : null}
             </div>
         </nav>
     </header>

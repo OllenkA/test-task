@@ -19,7 +19,7 @@ const MainPage = (props) => {
                 <li>/posts - any similar information, you can use for example jsonplaceholder.
                     Optional: Implement infinity scrolling for / posts
                 </li>
-                <li>/profile - страница с произвольным текстом, недоступная без авторизации</li>
+                <li>/profile - free text page, unavailable without authorization</li>
             </ul>
             <p>On the site, in the header, implement links:</p>
             <ul>
@@ -86,7 +86,7 @@ const MainPage = (props) => {
         <Title title={'MAIN'}/>
         <article className={styles.wrapper}>
             <button onClick={changeLanguage} className={styles.button}>
-                {props.language === 'ru' ? 'translate to english' : 'translate to russian'}
+                {props.language === 'ru' ? 'TRANSLATE TO ENGLISH' : 'TRANSLATE TO RUSSIAN'}
             </button>
             { articles[props.language] }
         </article>

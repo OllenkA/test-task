@@ -17,6 +17,14 @@
     margin-top: 10px;
 }
 
+.loading{
+    text-align: center;
+    width: 150px;
+    height: 70px;
+    color: black;
+    font-weight: bold;
+}
+
 .title {
     text-align: center;
 }

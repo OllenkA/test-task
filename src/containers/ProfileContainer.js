@@ -9,7 +9,6 @@ const ProfileContainer = (props) => {
     if(props.isAuth === false){
         return <Redirect to={'/login'}/>
     }
-
     return <Profile {...props}/>
 };
 

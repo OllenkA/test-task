@@ -49,11 +49,11 @@ const authReducer = (state = initialState, action) => {
     }
 };
 
-// залогиниваемся if - если пароль и юзернейм проходят проверку диспатчим loginSuccess
-// иначе loginError
 export const login = (username, password) => async (dispatch) => {
+    debugger
     const result = await api.login(username, password);
     if (result.ok) {
+        debugger
         await repository.saveToken(result.token);
         await repository.saveUserName(username);
         dispatch(loginSuccess(username))
@@ -63,18 +63,19 @@ export const login = (username, password) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-    // выолгиниваемся, просто зачистив токен у себя и изменив стейт...
     await repository.clearAll();
     dispatch(logOut())
 };
 
 export const checkAuthorization = () => async (dispatch) => {
+    debugger
     const token = await repository.loadToken();
-
-    if (token) {
+    if (token === 'null') {
+        dispatch(logOut())
+    } else {
         const username = await repository.loadUserName();
         dispatch(loginSuccess(username))
-    }
+        }
 };
 
 export const loginSuccess = (username) => ({type: LOGIN_SUCCESS, username});

@@ -44,7 +44,7 @@ class PostsContainer extends Component {
                 <Title title={'POSTS'}/>
                 <section className={styles.wrapper} ref={this.sectionRef}>
                     {postsElements}
-                    {this.props.loading && <span>loading...</span>}
+                    {this.props.loading && <span className={styles.loading}>LOADING...</span>}
                 </section>
             </article>
         );
